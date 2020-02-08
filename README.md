@@ -2,7 +2,7 @@
 
 <p align="center">🍩</p>
 
- * NPM package that allows you to check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
+ * NPM package that allows you to check if the URL has a legit and a valid domain extension!
  * Supports all of the domain extensions available over the world!
  * Supports all domain extensions even with punny codes such as: `.சிங்கப்பூர்`, `.онлайн`, `.كاثوليك`, `.新加坡`, `.ভারত`, `.భారత్` and so on (yes, they are legit domain extensions) 
  * Package automatically checks for the latest list of domain extensions from [Internet Assigned Numbers Authority](https://www.iana.org/)
