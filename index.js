@@ -9,7 +9,7 @@ const axios = require("axios");
 const ExtractDomain = require("extract-domain");
 const PunnyCode = require("punycode");
 
-module.exports = async(url) =>
+module.exports = async (url) =>
 {
     if(url.length <= 0 || !url || typeof url !== "string")
     {
