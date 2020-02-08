@@ -21,9 +21,9 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/tutyamxx/is-valid-domain-extension"
     },
-    "homepage": "",
+    "homepage": "https://github.com/tutyamxx/is-valid-domain-extension",
     "dependencies": {
         "axios": "^0.19.2",
         "extract-domain": "^2.2.1",
