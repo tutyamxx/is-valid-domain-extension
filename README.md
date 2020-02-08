@@ -31,17 +31,17 @@ async function test()
         console.log("This a legit and a valid domain extension! 🍩");
     }
 
-    if (await isValidDomainExtension("http://exampleurl.みんな"));
+    if(await isValidDomainExtension("http://exampleurl.みんな"));
     {
         console.log("This a legit and a valid domain extension! 🍩");
     }
 
-    if (await isValidDomainExtension("http://exampleurl.العليان"))
+    if(await isValidDomainExtension("http://exampleurl.العليان"))
     {
         console.log("This a legit and a valid domain extension! 🍩");
     }
 
-    if (await isValidDomainExtension("www.exampleurl.wolterskluwer"))
+    if(await isValidDomainExtension("www.exampleurl.wolterskluwer"))
     {
         console.log("This a legit and a valid domain extension! 🍩");
     }
@@ -49,22 +49,21 @@ async function test()
 
     // --| Returns: false
     // --| The following examples return false as not they are not valid url's or domain extensions 
-    if (await isValidDomainExtension("https://exampleurl.comdasdsadasdsadasdsa"))
+    if(await isValidDomainExtension("https://exampleurl.comdasdsadasdsadasdsa"))
     {
         console.log("This is not a valid domain extension! 😔");
     }
 
-    if (await isValidDomainExtension("http://exampleurl.comxxxxxx"))
+    if(await isValidDomainExtension("http://exampleurl.comxxxxxx"))
     {
         console.log("This is not a valid domain extension! 😔");
     }
 
-    if (await isValidDomainExtension("http://exampleurl"))
+    if(await isValidDomainExtension("http://exampleurl"))
     {
         console.log("This is not a valid domain extension! 😔");
     }
 }
 
 test();
-
 ```
