@@ -1,6 +1,6 @@
 /**
  *  is-valid-domain-extension - Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.0.4
+ *  @version: v1.0.5
  *  @link: https://github.com/tutyamxx/custom-url-check
  *  @license: MIT
  **/
