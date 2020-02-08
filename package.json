@@ -1,0 +1,32 @@
+{
+    "name": "is-valid-domain-extension",
+    "version": "1.0.0",
+    "description": "Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "check-valid-domain-extension",
+        "node",
+        "npm",
+        "valid-extension",
+        "url-extension",
+        "valid-extension",
+        "valid-url-extension",
+        "valid-domain-extension",
+        "is-valid-domain-extension"
+    ],
+    "author": "tuty",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "homepage": "",
+    "dependencies": {
+        "axios": "^0.19.2",
+        "extract-domain": "^2.2.1",
+        "punycode": "^2.1.1"
+    }
+}
