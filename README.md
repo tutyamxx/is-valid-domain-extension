@@ -8,7 +8,7 @@
  * Package automatically checks for the latest list of domain extensions from [Internet Assigned Numbers Authority](https://www.iana.org/)
  * See examples below
  
- # Install [NPM](https://www.npmjs.com/package/is-valid-domain-extension)
+# Install [NPM](https://www.npmjs.com/package/is-valid-domain-extension)
  
  `$ npm i is-valid-domain-extension`
  
