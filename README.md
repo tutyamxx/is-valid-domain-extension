@@ -12,7 +12,7 @@
  
  `$ npm i is-valid-domain-extension`
  
- # Usage 
+# Usage 
 
 - Returns a Boolean indicating whether `string` is a legit and a valid domain extension
 - It will return `false` if the `string` is empty or if it desn't start with `http://`, `https://` or `www.`
