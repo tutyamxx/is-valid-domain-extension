@@ -1,6 +1,6 @@
 /**
  *  is-valid-domain-extension - Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.0.5
+ *  @version: v1.0.6
  *  @link: https://github.com/tutyamxx/custom-url-check
  *  @license: MIT
  **/
@@ -30,7 +30,7 @@ module.exports = async (url) =>
 
         const TrimmedURL = url.trim();
         const GetExtensionFromURL = ExtractDomain(TrimmedURL).split(".").pop().toLowerCase();
-        
+
         let ArrayOfExtensions = FetchDomainExtensions.map(extension => extension.toLowerCase());
         let FormattedExtension = "";
 
@@ -44,7 +44,7 @@ module.exports = async (url) =>
         {
             FormattedExtension = "xn--" + PunnyCode.encode(GetExtensionFromURL).toString();
         }
-       
+
         if(ArrayOfExtensions.includes(FormattedExtension))
         {
             return true;
@@ -54,8 +54,8 @@ module.exports = async (url) =>
         {
             return false;
         }
-    } 
-    
+    }
+
     catch(error)
     {
         throw error.message;
