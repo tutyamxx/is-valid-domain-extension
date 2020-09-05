@@ -1,10 +1,10 @@
 {
     "name": "is-valid-domain-extension",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest --verbose"
     },
     "keywords": [
         "check-valid-domain-extension",
@@ -28,5 +28,8 @@
         "axios": "^0.19.2",
         "extract-domain": "^2.2.1",
         "punycode": "^2.1.1"
+    },
+    "devDependencies": {
+        "jest": "^26.4.2"
     }
 }
