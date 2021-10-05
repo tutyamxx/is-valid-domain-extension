@@ -1,63 +1,41 @@
 /**
  *  is-valid-domain-extension - Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.0.8
+ *  @version: v1.1.0
  *  @link: https://github.com/tutyamxx/custom-url-check
  *  @license: MIT
  **/
 
-const axios = require("axios");
-const ExtractDomain = require("extract-domain");
-const PunnyCode = require("punycode");
+const axios = require("axios").default;
+const extractDomain = require("extract-domain");
+const punnyCode = require("punycode");
 
-module.exports = async (url) =>
-{
-    if(url.length <= 0 || !url || typeof url !== "string")
-    {
+module.exports = async (url) => {
+    if (!url || typeof url !== "string") return false;
+
+    const worldWideWebPattern = /^(?:https?:\/\/)?(?:www\.)?/;
+    if (!worldWideWebPattern.test(url)) return false;
+
+    try {
+        const fetchDomainExtensions = await axios.get("https://data.iana.org/TLD/tlds-alpha-by-domain.txt").then((response) => response.data.trim().split("\n").slice(1) || []);
+
+        const trimmedUrl = url.trim();
+        const getExtensionFromUrl = extractDomain(trimmedUrl).split(".").pop().toLowerCase();
+
+        let arrayOfExtensions = fetchDomainExtensions.map((extension) => extension.toLowerCase());
+        let formattedExtension = "";
+
+        try {
+            punnyCode.decode(getExtensionFromUrl);
+            formattedExtension = getExtensionFromUrl;
+
+        } catch (error) {
+            formattedExtension = "xn--" + punnyCode.encode(getExtensionFromUrl).toString();
+        }
+
+        if (arrayOfExtensions.includes(formattedExtension)) return true;
         return false;
-    }
 
-    const WorldWideWebPattern = /^(?:https?:\/\/)?(?:www\.)?/;
-
-    if(!WorldWideWebPattern.test(url))
-    {
-        return false;
-    }
-
-    try
-    {
-        const FetchResponse = await axios.get("https://data.iana.org/TLD/tlds-alpha-by-domain.txt");
-        const FetchDomainExtensions = await FetchResponse.data.trim().split("\n").slice(1);
-
-        const TrimmedURL = url.trim();
-        const GetExtensionFromURL = ExtractDomain(TrimmedURL).split(".").pop().toLowerCase();
-
-        let ArrayOfExtensions = FetchDomainExtensions.map(extension => extension.toLowerCase());
-        let FormattedExtension = "";
-
-        try
-        {
-            PunnyCode.decode(GetExtensionFromURL);
-            FormattedExtension = GetExtensionFromURL;
-        }
-
-        catch(error)
-        {
-            FormattedExtension = "xn--" + PunnyCode.encode(GetExtensionFromURL).toString();
-        }
-
-        if(ArrayOfExtensions.includes(FormattedExtension))
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
-    }
-
-    catch(error)
-    {
+    } catch (error) {
         throw error.message;
     }
 };

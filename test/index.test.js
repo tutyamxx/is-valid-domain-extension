@@ -1,42 +1,31 @@
 const isValidDomainExtension = require("../index.js");
 
-const ValidLegitimateDomainExtensions =
-[
+const validLegitimateDomainExtensions = [
     "www.exampleurl.香港",
     "http://exampleurl.みんな",
     "http://exampleurl.العليان",
     "www.exampleurl.wolterskluwer"
 ];
 
-const InvalidDomainExtensions =
-[
+const invalidDomainExtensions = [
     "https://exampleurl.comdasdsadasdsadasdsa",
     "http://exampleurl.comxxxxxx",
     "http://exampleurl"
 ];
 
-const InvalidURL = ["", "htt://www.google.co.uk", "htts//google.com", "google.com" ];
-
-test("Check for valid domain extensions", () =>
-{
-    ValidLegitimateDomainExtensions.forEach(async (url) =>
-    {
-        expect(await isValidDomainExtension(url)).toBe(true);
-    });
+test("Check for valid domain extensions", async () => {
+    for (const urlElement of validLegitimateDomainExtensions) {
+        expect(await isValidDomainExtension(urlElement)).toBe(true);
+    }
 });
 
-test("Check fo invalid domain extensions", () =>
-{
-    InvalidDomainExtensions.forEach(async (url) =>
-    {
-        expect(await isValidDomainExtension(url)).toBe(false);
-    });
+test("Check for invalid domain extensions", async () => {
+    for (const urlElement of invalidDomainExtensions) {
+        expect(await isValidDomainExtension(urlElement)).toBe(false);
+    }
 });
 
-test("Check for invalid URL formats", () =>
-{
-    InvalidURL.forEach(async (url) =>
-    {
-        expect(await isValidDomainExtension(url)).toBe(false);
-    });
+test("Should return false if url param is not specified or empty", async () => {
+    expect(await isValidDomainExtension()).toBe(false);
+    expect(await isValidDomainExtension("")).toBe(false);
 });
