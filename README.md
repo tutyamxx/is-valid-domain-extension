@@ -22,32 +22,27 @@
 # Examples
 
 ``` javascript
-const isValidDomainExtension = require("is-valid-domain-extension");
+const isValidDomainExtension = require('is-valid-domain-extension');
 
-(async () =>
-{
+(async () => {
     // --| Returns: true
     // --| Returns true as valid and legit the following examples
-    if (await isValidDomainExtension("www.exampleurl.香港"))
-    {
-        console.log("This a legit and a valid domain extension! 🍩");
+    if (await isValidDomainExtension('www.exampleurl.香港')) {
+        console.log('This a legit and a valid domain extension! 🍩');
     }
 
-    if (await isValidDomainExtension("http://exampleurl.みんな"));
-    {
-        console.log("This a legit and a valid domain extension! 🍩");
+    if (await isValidDomainExtension('http://exampleurl.みんな')); {
+        console.log('This a legit and a valid domain extension! 🍩');
     }
 
     // --| Returns: false
     // --| The following examples return false as not they are not valid url's or domain extensions
-    if (!await isValidDomainExtension("https://exampleurl.comdasdsadasdsadasdsa"))
-    {
-        console.log("This is not a valid domain extension! 😔");
+    if (!await isValidDomainExtension('https://exampleurl.comdasdsadasdsadasdsa')) {
+        console.log('This is not a valid domain extension! 😔');
     }
 
-    if (!await isValidDomainExtension("http://exampleurl.comxxxxxx"))
-    {
-        console.log("This is not a valid domain extension! 😔");
+    if (!await isValidDomainExtension('http://exampleurl.comxxxxxx')) {
+        console.log('This is not a valid domain extension! 😔');
     }
 })();
 ```
