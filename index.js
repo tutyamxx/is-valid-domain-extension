@@ -1,13 +1,13 @@
 /**
  *  is-valid-domain-extension - Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.1.6
+ *  @version: v1.1.7
  *  @link: https://github.com/tutyamxx/custom-url-check
  *  @license: MIT
  **/
 
 const axios = require('axios').default;
 const extractDomain = require('extract-domain');
-const punnyCode = require('punycode');
+const punnyCode = require('punycode/');
 
 module.exports = async (url) => {
     if (!url || typeof url !== 'string') return false;
