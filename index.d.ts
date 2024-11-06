@@ -1,1 +1,1 @@
-export default function (url: string): boolean;
+export default function (url: string | undefined | null): boolean;
