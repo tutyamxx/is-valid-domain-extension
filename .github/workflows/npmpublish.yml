@@ -12,11 +12,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # Skip Dependabot PRs for CI/CD
     if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -27,15 +28,17 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+
+    # Skip Dependabot PRs
     if: ${{ github.actor != 'dependabot[bot]' }}
 
+    # Required for OIDC Trusted Publishing
     permissions:
       contents: read
-      id-token: write   # 👈 REQUIRED for Trusted Publishing
+      id-token: write # 👈 REQUIRED for Trusted Publishing
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*

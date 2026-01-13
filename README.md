@@ -22,7 +22,7 @@
 # Examples
 
 ``` javascript
-const isValidDomainExtension = require('is-valid-domain-extension');
+import isValidDomainExtension from 'is-valid-domain-extension';
 
 (async () => {
     // --| Returns: true
