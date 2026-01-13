@@ -1,4 +1,4 @@
-const isValidDomainExtension = require('../index.js');
+import isValidDomainExtension from '../index.js';
 
 const validLegitimateDomainExtensions = [
     'www.exampleurl.香港',
