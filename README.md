@@ -21,8 +21,9 @@
 
 # Examples
 
+## CommonJS
 ``` javascript
-import isValidDomainExtension from 'is-valid-domain-extension';
+const isValidDomainExtension = require('is-valid-domain-extension');
 
 (async () => {
     // --| Returns: true
@@ -47,4 +48,68 @@ import isValidDomainExtension from 'is-valid-domain-extension';
 })();
 ```
 
+## ESM
+```javascript
+import isValidDomainExtension from 'is-valid-domain-extension';
+
+(async () => {
+    // --| Returns: true
+    // --| Returns true as valid and legit the following examples
+    if (await isValidDomainExtension('www.exampleurl.香港')) {
+        console.log('This is a legit and valid domain extension! 🍩');
+    }
+
+    if (await isValidDomainExtension('http://exampleurl.みんな')); {
+        console.log('This a legit and a valid domain extension! 🍩');
+    }
+
+    // --| Returns: false
+    // --| The following examples return false as not they are not valid url's or domain extensions
+    if (!await isValidDomainExtension('http://exampleurl.comxxxxxx')) {
+        console.log('This is not a valid domain extension! 😔');
+    }
+
+    if (!await isValidDomainExtension('http://exampleurl.comxxxxxx')) {
+        console.log('This is not a valid domain extension! 😔');
+    }
+})();
+```
+## TypeScript
+
+```javascript
+import isValidDomainExtension from 'is-valid-domain-extension';
+
+(async () => {
+    // --| Valid domain examples
+    const validDomains: string[] = [
+        'www.exampleurl.香港',
+        'http://exampleurl.みんな',
+        'http://exampleurl.العليان',
+        'www.exampleurl.wolterskluwer'
+    ];
+
+    for (const url of validDomains) {
+        const isValid: boolean = await isValidDomainExtension(url);
+
+        if (isValid) {
+            console.log(`✅ ${url} is a legit and valid domain extension! 🍩`);
+        }
+    }
+
+    // --| Invalid domain examples
+    const invalidDomains: string[] = [
+        'https://exampleurl.comdasdsadasdsadasdsa',
+        'http://exampleurl.comxxxxxx',
+        'http://exampleurl'
+    ];
+
+    for (const url of invalidDomains) {
+        const isValid: boolean = await isValidDomainExtension(url);
+
+        if (!isValid) {
+            console.log(`❌ ${url} is NOT a valid domain extension! 😔`);
+        }
+    }
+})();
+```
 <p align="center">🍩</p>

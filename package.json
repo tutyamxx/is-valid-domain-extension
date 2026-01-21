@@ -1,12 +1,16 @@
 {
     "name": "is-valid-domain-extension",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!",
-    "main": "index.js",
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "type": "module",
+    "main": "./index.cjs",
+    "exports": {
+        "require": "./index.cjs",
+        "import": "./index.js"
+    },
     "keywords": [
         "check-valid-domain-extension",
         "node",
@@ -29,6 +33,9 @@
         "axios": "^1.7.9",
         "extract-domain": "^5.0.2",
         "punycode": "^2.3.1"
+    },
+    "jest": {
+        "testEnvironment": "node"
     },
     "devDependencies": {
         "jest": "^30.2.0"
