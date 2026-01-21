@@ -1,6 +1,6 @@
 {
     "name": "is-valid-domain-extension",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!",
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"

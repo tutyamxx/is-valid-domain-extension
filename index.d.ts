@@ -11,10 +11,9 @@
  * @example
  * ```ts
  * import isValidDomainExtension from 'is-valid-domain-extension';
- *
  * const isValid = await isValidDomainExtension('https://пример.рф');
  * ```
  */
 declare function isValidDomainExtension(url?: string | null): Promise<boolean>;
 
-export default isValidDomainExtension;
+export = isValidDomainExtension;
