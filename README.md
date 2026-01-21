@@ -77,7 +77,7 @@ import isValidDomainExtension from 'is-valid-domain-extension';
 ## TypeScript
 
 ```javascript
-import isValidDomainExtension from 'is-valid-domain-extension';
+import isValidDomainExtension = require('is-valid-domain-extension');
 
 (async () => {
     // --| Valid domain examples
