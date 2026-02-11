@@ -1,6 +1,6 @@
 {
     "name": "is-valid-domain-extension",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "description": "Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!",
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
@@ -31,7 +31,7 @@
     },
     "homepage": "https://github.com/tutyamxx/is-valid-domain-extension",
     "dependencies": {
-        "axios": "^1.7.9",
+        "axios": "^1.13.5",
         "extract-domain": "^5.0.2",
         "punycode": "^2.3.1"
     },
