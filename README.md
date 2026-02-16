@@ -3,6 +3,9 @@
 <p align="center">🍩</p>
 
 <p align="center"><a href="https://nodei.co/npm/is-valid-domain-extension/"><img src="https://nodei.co/npm/is-valid-domain-extension.png"></a></p>
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+</p>
 
  * NPM package that allows you to check if the URL has a legit and a valid domain extension!
  * Supports all of the domain extensions available over the world!

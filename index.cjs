@@ -1,6 +1,6 @@
 /**
  *  is-valid-domain-extension - Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.2.6
+ *  @version: v1.2.7
  *  @link: https://github.com/tutyamxx/is-valid-domain-extension
  *  @license: MIT
  **/
@@ -35,30 +35,29 @@ const punyCode = require('punycode/');
 module.exports = async function isValidDomainExtension(url) {
     if (!url || typeof url !== 'string') return false;
 
-    const worldWideWebPattern = /^(?:https?:\/\/)?(?:www\.)?/;
-    if (!worldWideWebPattern.test(url)) return false;
-
     // --| Lazy load the esm
     const { default: extractDomain } = await import('extract-domain');
 
-    const fetchDomainExtensions = await axios.get('https://data.iana.org/TLD/tlds-alpha-by-domain.txt')
-        .then(res => res?.data?.trim()?.split('\n')?.slice(1) || []);
-
-    const domain = extractDomain(url.trim());
+    const domain = extractDomain(url?.trim() ?? '');
 
     if (!domain) return false;
 
-    const extension = domain.split('.').pop().toLowerCase();
-    const extensions = fetchDomainExtensions.map(e => e.toLowerCase());
+    const extension = domain?.split('.')?.pop()?.toLowerCase() ?? '';
+
+    // --| Fetch IANA TLDs
+    const fetchDomainExtensions = await axios.get('https://data.iana.org/TLD/tlds-alpha-by-domain.txt')
+        .then(res => res?.data?.trim()?.split('\n')?.slice(1) ?? []);
+
+    const extensions = fetchDomainExtensions?.map(e => e?.toLowerCase() ?? '') ?? [];
 
     let formatted;
 
     try {
-        punyCode.decode(extension);
-        formatted = extension;
+        // --| Convert Unicode TLDs to ASCII punycode
+        formatted = punyCode?.toASCII(extension ?? '');
     } catch {
-        formatted = `xn--${punyCode.encode(extension)}`;
+        formatted = extension ?? '';
     }
 
-    return extensions.includes(formatted);
+    return extensions?.includes(formatted ?? '') ?? false;
 };

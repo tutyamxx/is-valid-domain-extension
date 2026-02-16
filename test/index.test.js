@@ -1,16 +1,17 @@
 import isValidDomainExtension from '../index.js';
 
 const validLegitimateDomainExtensions = [
-    'www.exampleurl.香港',
-    'http://exampleurl.みんな',
-    'http://exampleurl.العليان',
-    'www.exampleurl.wolterskluwer'
+    'www.example.com',                 // --| ASCII
+    'http://example.org',              // --| ASCII
+    'http://example.中国',             // --| Unicode
+    'https://example.みんな'           // --| Unicode
 ];
 
 const invalidDomainExtensions = [
-    'https://exampleurl.comdasdsadasdsadasdsa',
-    'http://exampleurl.comxxxxxx',
-    'http://exampleurl'
+    'https://example.comdasdsadasdsadasdsa',  // --| Invalid TLD
+    'http://example.comxxxxxx',               // --| Invalid TLD
+    'http://example',                         // --| No TLD
+    'http://example.wolterskluwer'            // --| Not an actual IANA TLD
 ];
 
 test('Check for valid domain extensions', async () => {
