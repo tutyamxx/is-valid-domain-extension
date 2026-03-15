@@ -1,9 +1,10 @@
 /**
- *  is-valid-domain-extension - Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.2.9
+ *  is-valid-domain-extension - 🌐 Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
+ *  @version: v1.3.0
  *  @link: https://github.com/tutyamxx/is-valid-domain-extension
  *  @license: MIT
  **/
+
 
 const axios = require('axios').default;
 const punyCode = require('punycode/');
@@ -33,14 +34,18 @@ const punyCode = require('punycode/');
  * ```
  */
 module.exports = async function isValidDomainExtension(url) {
-    if (!url || typeof url !== 'string') return false;
+    if (!url || typeof url !== 'string') {
+        return false;
+    }
 
     // --| Lazy load the esm
     const { default: extractDomain } = await import('extract-domain');
 
     const domain = extractDomain(url?.trim() ?? '');
 
-    if (!domain) return false;
+    if (!domain) {
+        return false;
+    }
 
     const extension = domain?.split('.')?.pop()?.toLowerCase() ?? '';
 
