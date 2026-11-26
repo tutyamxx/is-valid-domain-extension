@@ -1,6 +1,6 @@
 /**
  *  is-valid-domain-extension - 🌐 Check if the URL has a legit and a valid domain extension! Supports all extensions even with punny codes!
- *  @version: v1.3.5
+ *  @version: v1.3.6
  *  @link: https://github.com/tutyamxx/is-valid-domain-extension
  *  @license: MIT
  **/
@@ -31,18 +31,20 @@ const getTlds = async () => {
     }
 
     try {
-        pendingTldRequest = axios.get(IANA_TLD_LIST_URL).then(({ data }) => new Set(data
-            .split(/\r?\n/).filter(line => line && !line.startsWith('#'))
-            .map(line => line.toLowerCase()))
-        );
+        pendingTldRequest = axios.get(IANA_TLD_LIST_URL).then(({ data: tldFileContent }) => new Set(tldFileContent
+            .split(/\r?\n/)
+            .map(rawLine => rawLine.trim().toLowerCase())
+            .filter(tldLine => tldLine && !tldLine.startsWith('#'))
+        ));
 
-        const tlds = await pendingTldRequest;
+        const fetchedTlds = await pendingTldRequest;
 
-        cachedTlds = tlds;
+        cachedTlds = fetchedTlds;
         cacheExpiresAt = Date.now() + TLD_CACHE_TTL_MS;
-        return tlds;
+
+        return fetchedTlds;
     } catch {
-        return new Set();
+        return cachedTlds ?? new Set();
     } finally {
         pendingTldRequest = undefined;
     }

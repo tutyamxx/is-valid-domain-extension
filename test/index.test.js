@@ -4,7 +4,10 @@ const validLegitimateDomainExtensions = [
     'www.example.com',                 // --| ASCII
     'http://example.org',              // --| ASCII
     'http://example.中国',             // --| Unicode
-    'https://example.みんな'           // --| Unicode
+    'https://example.みんな',          // --| Unicode
+    'https://example.xn--fiqs8s',      // --| Punycode
+    'https://example.COM',             // --| Uppercase TLD
+    '  https://example.com  '          // --| Surrounding whitespace
 ];
 
 const invalidDomainExtensions = [
@@ -29,4 +32,21 @@ test('Check for invalid domain extensions', async () => {
 test('Should return false if url param is not specified or empty', async () => {
     expect(await isValidDomainExtension()).toBe(false);
     expect(await isValidDomainExtension('')).toBe(false);
+    expect(await isValidDomainExtension(null)).toBe(false);
+});
+
+test('Should return false if url param is not a string', async () => {
+    expect(await isValidDomainExtension(123)).toBe(false);
+    expect(await isValidDomainExtension({})).toBe(false);
+    expect(await isValidDomainExtension(['example.com'])).toBe(false);
+});
+
+test('Should handle concurrent calls', async () => {
+    const results = await Promise.all([
+        isValidDomainExtension('https://example.com'),
+        isValidDomainExtension('https://example.org'),
+        isValidDomainExtension('https://example.invalidtld')
+    ]);
+
+    expect(results).toEqual([true, true, false]);
 });
